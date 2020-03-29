@@ -8,7 +8,7 @@ public class Forward : Command
     {
         if (!state.ForwardState)
         {
-            rotate.eulerAngles = new Vector3(0, 0, 0);
+            rotate.eulerAngles = Vector2.zero;
             state.SetToForward();
         }
         rotate.anchoredPosition += (Vector2.up * height);

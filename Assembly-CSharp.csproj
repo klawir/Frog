@@ -65,44 +65,17 @@
   <ItemGroup>
     <Compile Include="Assets\Backward.cs" />
     <Compile Include="Assets\Command.cs" />
+    <Compile Include="Assets\Detecting.cs" />
     <Compile Include="Assets\Forward.cs" />
     <Compile Include="Assets\Keyboard.cs" />
     <Compile Include="Assets\Left.cs" />
-    <Compile Include="Assets\PlayerData.cs" />
+    <Compile Include="Assets\Obstacle.cs" />
+    <Compile Include="Assets\Obstacles.cs" />
     <Compile Include="Assets\Right.cs" />
+    <Compile Include="Assets\SpawnerManager.cs" />
     <Compile Include="Assets\State.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Build.Internals">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Build.Internals.dll</HintPath>
@@ -115,6 +88,9 @@
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Build.Common">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Build.Common.dll</HintPath>
@@ -161,11 +137,17 @@
     <Reference Include="Unity.Scenes.Editor">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Scenes.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Extensions">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Input.Hybrid">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Tiny.Input.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Animation">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Tiny.Animation.dll</HintPath>
@@ -179,11 +161,20 @@
     <Reference Include="Unity.Tiny.GLFW">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Tiny.GLFW.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Platforms.Build">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Platforms.Build.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Entities.BuildUtils">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Hybrid.EndToEnd.Tests">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Entities.Hybrid.EndToEnd.Tests.dll</HintPath>
@@ -196,6 +187,12 @@
     </Reference>
     <Reference Include="Unity.Properties">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
@@ -220,6 +217,12 @@
     </Reference>
     <Reference Include="Unity.Tiny.Image2D.Native">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Tiny.Image2D.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>F:/projects/unity 19/Frogger/project/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>

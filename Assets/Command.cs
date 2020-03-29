@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Entities;
-using Unity.Mathematics;
-using Unity.Jobs;
 
 public abstract class Command
 {
@@ -16,8 +13,8 @@ public abstract class Command
 
     public Command()
     {
-        rotate = GameObject.FindObjectOfType<State>().GetComponent<RectTransform>();
         state = GameObject.FindObjectOfType<State>();
+        rotate = state.GetComponent<RectTransform>();
         model = rotate.GetComponent<Image>();
         height = rotate.rect.height;
         width = rotate.rect.width;
