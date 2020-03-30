@@ -6,14 +6,13 @@ public class Detecting : MonoBehaviour
 {
     public string playerTag;
     public string endOfMapTag;
+    public string spawnTrigger;
 
-    private Obstacles obstacles;
     public Obstacle obstacle;
     private SpawnerManager spawnerManager;
 
     private void Start()
     {
-        obstacles = GameObject.FindObjectOfType<Obstacles>();
         spawnerManager = GameObject.FindObjectOfType<SpawnerManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,9 +24,13 @@ public class Detecting : MonoBehaviour
         }
         if (collision.tag == endOfMapTag)
         {
-            obstacles.objects.RemoveAt(obstacles.objects.IndexOf(obstacle));
-            spawnerManager.SpawnCar();
+            spawnerManager.RespawnCar(obstacle); 
             Destroy(gameObject);
+        }
+        if (collision.tag == spawnTrigger)
+        {
+            Destroy(collision.gameObject);
+            spawnerManager.SpawnCar(obstacle);
         }
     }
 }

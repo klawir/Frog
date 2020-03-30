@@ -8,7 +8,7 @@ public class Obstacles : MonoBehaviour
 
     void FixedUpdate()
     {
-        foreach (Obstacle rect in objects)
-            rect.Move();
+        foreach (Obstacle obstacle in objects)
+            obstacle.Move();
     }
 }

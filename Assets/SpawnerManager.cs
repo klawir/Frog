@@ -6,19 +6,36 @@ public class SpawnerManager : MonoBehaviour
 {
     public List<Obstacle> cars;
     public List<RectTransform> carsSpawnPoints;
+    public List<RectTransform> carsEndSpawnPoints;
     public List<GameObject> woods;
     public List<GameObject> woodsSpawnPoints;
 
     public GameObject player;
     public Transform playerSpawnPos;
-
-    private Canvas map;
     private Obstacles obstacles;
 
-    public void SpawnCar()
+    public void SpawnCars()
     {
-        Obstacle spawnedObj = Instantiate(cars[0], carsSpawnPoints[0]);
+        for (int a=0;a< carsSpawnPoints.Count;a++)
+        {
+            Obstacle spawnedObj = Instantiate(cars[0], carsSpawnPoints[a]);
+            obstacles.objects.Add(spawnedObj);
+            spawnedObj.sectorNr = a;
+        }
+    }
+    public void SpawnCar(Obstacle obstacle)
+    {
+        Obstacle spawnedObj = Instantiate(cars[0], carsSpawnPoints[obstacle.sectorNr]);
         obstacles.objects.Add(spawnedObj);
+        spawnedObj.sectorNr = obstacle.sectorNr;
+    }
+    public void RespawnCar(Obstacle obstacle)
+    {
+        int itemIndex = obstacles.objects.IndexOf(obstacle);
+        obstacles.objects.RemoveAt(itemIndex);
+        Obstacle spawnedObj = Instantiate(cars[0], carsSpawnPoints[obstacle.sectorNr]);
+        obstacles.objects.Add(spawnedObj);
+        spawnedObj.sectorNr = obstacle.sectorNr;
     }
     public void SpawnWood()
     {
@@ -31,8 +48,7 @@ public class SpawnerManager : MonoBehaviour
     private void Start()
     {
         obstacles = GameObject.FindObjectOfType<Obstacles>();
-        map= GameObject.FindObjectOfType<Canvas>();
-        SpawnCar();
+        SpawnCars();
         SpawnPlayer();
     }
 }

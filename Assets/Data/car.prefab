@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   endOfMapTag: Finish
+  spawnTrigger: spawnTrigger
   obstacle: {fileID: -377145785114191524}
 --- !u!114 &-377145785114191524
 MonoBehaviour:
@@ -164,5 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a877ced29aed441a0f7eb0724fd01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 25
   rect: {fileID: 3936121015659497235}
