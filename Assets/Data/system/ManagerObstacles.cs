@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacles : MonoBehaviour
+public class ManagerObstacles : MonoBehaviour
 {
-    public List<Obstacle> objects;
+    public List<MovingObject> objects;
 
     void FixedUpdate()
     {
-        foreach (Obstacle obstacle in objects)
+        foreach (MovingObject obstacle in objects)
             obstacle.Move();
     }
 }
