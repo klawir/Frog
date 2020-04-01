@@ -4,11 +4,6 @@ using UnityEngine;
 
 public abstract class Detector : MonoBehaviour
 {
-    public string playerTag;
-    public string endOfMapTag;
-    public string spawnTrigger;
-
-    public MovingObject obstacle;
     protected SpawnerManager spawnerManager;
 
     protected virtual void Start()

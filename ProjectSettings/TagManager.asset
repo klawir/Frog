@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - spawnTrigger
+  - obstacle
+  - areaObstacle
+  - floatingItem
   layers:
   - Default
   - TransparentFX

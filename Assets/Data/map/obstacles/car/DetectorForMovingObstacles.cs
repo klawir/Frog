@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectorForMovingItems : Detector
+public class DetectorForMovingObstacles : DetectorForMovingObjects
 {
     protected override void Start()
     {
@@ -10,6 +10,8 @@ public class DetectorForMovingItems : Detector
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        base.OnTriggerEnter2D(collision);
+        
         
     }
 }

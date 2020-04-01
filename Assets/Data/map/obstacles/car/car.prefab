@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 7484638480886373112}
   - component: {fileID: 5506790888128276131}
   - component: {fileID: 7118222131224437675}
-  - component: {fileID: 6295457143606123484}
   - component: {fileID: -377145785114191524}
+  - component: {fileID: 1594083219136475787}
   m_Layer: 5
   m_Name: car
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,22 +137,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 120, y: 65}
   m_EdgeRadius: 0
---- !u!114 &6295457143606123484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9102150738624069126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bebf5a8aecd6a0d42b1bf4aad01bb2f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  endOfMapTag: Finish
-  spawnTrigger: spawnTrigger
-  obstacle: {fileID: -377145785114191524}
 --- !u!114 &-377145785114191524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +152,18 @@ MonoBehaviour:
   speed: 25
   rect: {fileID: 3936121015659497235}
   sectorNr: 0
+--- !u!114 &1594083219136475787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9102150738624069126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c97a1df93538f24582267f762464dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTrigger: spawnTrigger
+  endOfMapTag: Respawn
+  obstacle: {fileID: -377145785114191524}

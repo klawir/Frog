@@ -42,37 +42,41 @@ public class SpawnerManager : MonoBehaviour
     /// Spawns a car at line based on the argument
     /// </summary>
     /// <param name="obstacle"></param>
-    public void SpawnObstacle(MovingObject obstacle)
+    public void SpawnObject(MovingObject obstacle)
     {
-        MovingObject spawnedObj = Instantiate(movingObjects[0], obstaclesSpawnPoints[obstacle.sectorNr]);
-        managerObstacles.objects.Add(spawnedObj);
-        spawnedObj.sectorNr = obstacle.sectorNr;
+        int itemIndex = 0;
+        MovingObject spawnedObj;
+
+        obstacle.gameObject.name = obstacle.gameObject.name.Replace("(Clone)", "");
+        foreach (MovingObject _obstacle in movingObjects)
+            if (obstacle.name == _obstacle.name)
+                itemIndex = movingObjects.IndexOf(_obstacle);
+
+        switch (itemIndex)
+        {
+            case 0:
+                spawnedObj = Instantiate(movingObjects[itemIndex], obstaclesSpawnPoints[obstacle.sectorNr]);
+                managerObstacles.objects.Add(spawnedObj);
+                spawnedObj.sectorNr = obstacle.sectorNr;
+                break;
+            case 1:
+                spawnedObj = Instantiate(movingObjects[itemIndex], floatingItemsSpawnPoints[obstacle.sectorNr]);
+                managerObstacles.objects.Add(spawnedObj);
+                spawnedObj.sectorNr = obstacle.sectorNr;
+                break;
+        }
     }
-    public void SpawnFloatingItem(MovingObject obstacle)
-    {
-        MovingObject spawnedObj = Instantiate(movingObjects[1], floatingItemsSpawnPoints[obstacle.sectorNr]);
-        managerObstacles.objects.Add(spawnedObj);
-        spawnedObj.sectorNr = obstacle.sectorNr;
-    }
+
     /// <summary>
     /// Respawns a car which has been left the map
     /// </summary>
     /// <param name="obstacle"></param>
-    public void RespawnObstacle(MovingObject obstacle)
+    public void RespawnObject(MovingObject obstacle)
     {
         int itemIndex = managerObstacles.objects.IndexOf(obstacle);
         managerObstacles.objects.RemoveAt(itemIndex);
-        MovingObject spawnedObj = Instantiate(movingObjects[0], obstaclesSpawnPoints[obstacle.sectorNr]);
-        managerObstacles.objects.Add(spawnedObj);
-        spawnedObj.sectorNr = obstacle.sectorNr;
-    }
-    public void RespawnFloatingItem(MovingObject obstacle)
-    {
-        int itemIndex = managerObstacles.objects.IndexOf(obstacle);
-        managerObstacles.objects.RemoveAt(itemIndex);
-        MovingObject spawnedObj = Instantiate(movingObjects[1], floatingItemsSpawnPoints[obstacle.sectorNr]);
-        managerObstacles.objects.Add(spawnedObj);
-        spawnedObj.sectorNr = obstacle.sectorNr;
+
+        SpawnObject(obstacle);
     }
     public void SpawnPlayer()
     {

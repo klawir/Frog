@@ -64,9 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Data\map\Detector.cs" />
-    <Compile Include="Assets\Data\map\DetectorForMovingItems.cs" />
-    <Compile Include="Assets\Data\map\floating objects\DetectorForFloatingItems.cs" />
-    <Compile Include="Assets\Data\map\obstacles\car\DetectorForObstacles.cs" />
+    <Compile Include="Assets\Data\map\DetectorForMovingObjects.cs" />
+    <Compile Include="Assets\Data\map\DetectorForObstacleAreas.cs" />
+    <Compile Include="Assets\Data\map\obstacles\car\DetectorForMovingObstacles.cs" />
     <Compile Include="Assets\Data\map\obstacles\car\MovingObject.cs" />
     <Compile Include="Assets\Data\player\scripts\Backward.cs" />
     <Compile Include="Assets\Data\player\scripts\Command.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="Assets\Data\player\scripts\State.cs" />
     <Compile Include="Assets\Data\system\ManagerObstacles.cs" />
     <Compile Include="Assets\Data\system\SpawnerManager.cs" />
+    <Compile Include="Assets\DetectorForPlayer.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/projects/unity 19/Frogger/proj/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5891304651569587555}
   - component: {fileID: 5891304651569587554}
   - component: {fileID: 5891304651569587552}
+  - component: {fileID: 4653588034670331052}
   m_Layer: 5
   m_Name: player
   m_TagString: Player
@@ -59,7 +60,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -170,3 +171,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4653588034670331052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891304651569587556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce839cc0e60ca74da8f64782bf860a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingItemTag: floatingItem
+  obstacleTag: obstacle
+  areaObstacleTag: areaObstacle
+  finishPointTag: Finish
+  collider: {fileID: 5891304651569587551}
+  finishedState: {fileID: 3560534223557723389, guid: 6c6eb5e9491213e45a92740dcf4c7e65,
+    type: 3}

@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5506790888128276131}
   - component: {fileID: 7118222131224437675}
   - component: {fileID: -377145785114191524}
-  - component: {fileID: 1541374250438094292}
+  - component: {fileID: 6292308523025953813}
   m_Layer: 5
   m_Name: floating item
-  m_TagString: Untagged
+  m_TagString: floatingItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   speed: 25
   rect: {fileID: 3936121015659497235}
   sectorNr: 0
---- !u!114 &1541374250438094292
+--- !u!114 &6292308523025953813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,10 +161,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9102150738624069126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3642dff814a93d84bb5d3ab872caada6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c97a1df93538f24582267f762464dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
-  endOfMapTag: Finish
   spawnTrigger: spawnTrigger
+  endOfMapTag: Respawn
   obstacle: {fileID: -377145785114191524}
