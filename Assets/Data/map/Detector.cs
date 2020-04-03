@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class Detector : MonoBehaviour
 {
-    protected SpawnerManager spawnerManager;
+    protected SpawnManager spawnerManager;
 
     protected virtual void Start()
     {
-        spawnerManager = GameObject.FindObjectOfType<SpawnerManager>();
+        spawnerManager = GameObject.FindObjectOfType<SpawnManager>();
     }
     protected abstract void OnTriggerEnter2D(Collider2D collision);
 }

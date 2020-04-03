@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
     public List<MovingObject> movingObjects;
     public List<RectTransform> obstaclesSpawnPoints;
