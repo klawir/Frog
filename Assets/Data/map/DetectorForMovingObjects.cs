@@ -6,6 +6,7 @@ public class DetectorForMovingObjects : Detector
 {
     public string spawnTrigger;
     public string endOfMapTag;
+    public string limitImmersionInWater;
     public MovingObject obstacle;
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -19,6 +20,10 @@ public class DetectorForMovingObjects : Detector
         {
             spawnerManager.RespawnObject(obstacle);
             Destroy(gameObject);
+        }
+        if (collision.tag == limitImmersionInWater)
+        {
+            obstacle.BlockImmersionInWater();
         }
     }
 }

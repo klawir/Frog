@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5506790888128276131}
   - component: {fileID: 7118222131224437675}
   - component: {fileID: -377145785114191524}
-  - component: {fileID: 6292308523025953813}
+  - component: {fileID: 7625926004122789308}
   m_Layer: 5
   m_Name: floating item
   m_TagString: floatingItem
@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a877ced29aed441a0f7eb0724fd01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 20
   rect: {fileID: 3936121015659497235}
   sectorNr: 0
---- !u!114 &6292308523025953813
+--- !u!114 &7625926004122789308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,4 +166,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTrigger: spawnTrigger
   endOfMapTag: Respawn
+  limitImmersionInWater: limitImmersionInWater
   obstacle: {fileID: -377145785114191524}

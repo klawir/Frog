@@ -8,6 +8,7 @@ public class DetectorForPlayer : Detector
     public string movingObstacleTag;
     public string areaObstacleTag;
     public string finishPointTag;
+    public string firstTimeTag;
 
     public SpriteRenderer finishedState;
 
@@ -58,7 +59,6 @@ public class DetectorForPlayer : Detector
     {
         if (collision.gameObject.tag == floatingItemTag)
         {
-            Debug.Log("DetectorForPlayer OnTriggerExit2D");
             water.enabled = true;
             transform.SetParent(parentOfDetectedItem);
         }

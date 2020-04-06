@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     public int lifes;
-    public GameManager gameManager;
+    public GameScore gameManager;
     public float timeLimit;
     public Text score;
     public Text time;
@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private int reachedGoals;
     private int points;
     private float timer;
+    private float elapsedTime;
 
     private void Start()
     {
@@ -34,12 +35,13 @@ public class PlayerManager : MonoBehaviour
     public void ReachGoal(Reward reward)
     {
         reachedGoals++;
-        float valuePercent = (timeLimit - timer) / timeLimit;
+        elapsedTime=timeLimit - timer;
+        float valuePercent = (elapsedTime) / timeLimit;
         float value = reward.reachedGoal - (reward.reachedGoal * valuePercent);
         AddPoints((int)value);
         
         if (Won)
-            gameManager.ShowScores();
+            gameManager.ShowScores(this);
 
         timer = timeLimit;
     }
@@ -60,6 +62,10 @@ public class PlayerManager : MonoBehaviour
     }
     public bool Won
     {
-        get { return reachedGoals >= gameManager.gloalLimit; }
+        get { return reachedGoals == gameManager.gloalLimit; }
+    }
+    public int ElapsedTime
+    {
+        get { return (int)elapsedTime; }
     }
 }

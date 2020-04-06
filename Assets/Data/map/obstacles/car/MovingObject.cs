@@ -10,6 +10,7 @@ public class MovingObject : MonoBehaviour
     private float directionOfMovement;
     private Vector2 testPos;
     public int sectorNr;
+    private bool blockImmersionInWater;
 
     private void Start()
     {
@@ -29,6 +30,14 @@ public class MovingObject : MonoBehaviour
             directionOfMovement = -1;
             rect.GetComponent<SpriteRenderer>().flipX = true;
         }
+    }
+    public void BlockImmersionInWater()
+    {
+        blockImmersionInWater = true;
+    }
+    public bool IsBlockImmersionInWater
+    {
+        get { return blockImmersionInWater; }
     }
     public void Move()
     {

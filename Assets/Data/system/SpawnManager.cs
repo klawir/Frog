@@ -10,9 +10,10 @@ public class SpawnManager : MonoBehaviour
     public List<RectTransform> floatingItemsSpawnPoints;
     public List<RectTransform> floatingItemsEndSpawnPoints;
 
+    public string floatingItemTag;
     public GameObject player;
     public Transform playerSpawnPos;
-    private ManagerObstacles managerObstacles;
+    private ObjectsManager managerObstacles;
 
     /// <summary>
     /// Spawns 1 car for each 1 line
@@ -75,7 +76,9 @@ public class SpawnManager : MonoBehaviour
     {
         int itemIndex = managerObstacles.objects.IndexOf(obstacle);
         managerObstacles.objects.RemoveAt(itemIndex);
-
+        if(obstacle.tag == floatingItemTag)
+            managerObstacles.floatingObject.Remove(obstacle);
+        managerObstacles.floatingObject.RemoveAll(item=>item==null);
         SpawnObject(obstacle);
     }
     public void SpawnPlayer()
@@ -84,7 +87,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void Start()
     {
-        managerObstacles = GameObject.FindObjectOfType<ManagerObstacles>();
+        managerObstacles = GameObject.FindObjectOfType<ObjectsManager>();
         SpawnCars();
         SpawnFloatingItems();
         SpawnPlayer();

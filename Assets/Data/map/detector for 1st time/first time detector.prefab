@@ -76,4 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+  floatingItemTag: floatingItem
+  movingObstacleTag: obstacle
   collider: {fileID: 7416235550603997575}

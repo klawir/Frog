@@ -76,10 +76,10 @@
     <Compile Include="Assets\Data\player\scripts\Left.cs" />
     <Compile Include="Assets\Data\player\scripts\Right.cs" />
     <Compile Include="Assets\Data\player\scripts\State.cs" />
-    <Compile Include="Assets\Data\system\ManagerObstacles.cs" />
+    <Compile Include="Assets\Data\system\ObjectsManager.cs" />
     <Compile Include="Assets\Data\system\SpawnManager.cs" />
     <Compile Include="Assets\DetectorForPlayer.cs" />
-    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\GameScore.cs" />
     <Compile Include="Assets\PlayerManager.cs" />
     <Compile Include="Assets\Reward.cs" />
     <Reference Include="Unity.Timeline.Editor">
