@@ -187,5 +187,7 @@ MonoBehaviour:
   movingObstacleTag: obstacle
   areaObstacleTag: areaObstacle
   finishPointTag: Finish
+  firstTimeEntranceToArea: firstTimeEntranceToArea
   finishedState: {fileID: 3560534223557723389, guid: 6c6eb5e9491213e45a92740dcf4c7e65,
     type: 3}
+  collider: {fileID: 5891304651569587551}

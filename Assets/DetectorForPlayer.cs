@@ -8,7 +8,7 @@ public class DetectorForPlayer : Detector
     public string movingObstacleTag;
     public string areaObstacleTag;
     public string finishPointTag;
-    public string firstTimeTag;
+    public string firstTimeEntranceToArea;
 
     public SpriteRenderer finishedState;
 
@@ -16,6 +16,7 @@ public class DetectorForPlayer : Detector
     private Reward reward;
     private Transform parentOfDetectedItem;
     private Collider2D water;
+    public Collider2D collider;
     
     protected override void Start()
     {
@@ -34,17 +35,30 @@ public class DetectorForPlayer : Detector
         {
             parentOfDetectedItem = transform.parent;
             transform.SetParent(collision.transform);
-            
+        }
+        if (collision.gameObject.tag == firstTimeEntranceToArea)
+        {
+            MovingObject[] movingObjects = GameObject.FindObjectsOfType<MovingObject>();
+            for (int a = 0; a < movingObjects.Length; a++)
+            {
+                if (!Physics2D.IsTouching(movingObjects[a].GetComponent<Collider2D>(), collider))
+                {
+                    if (!collision.GetComponent<DetectorForAreas>().inWater)
+                    {
+                        player.PrizeForEnter(reward);
+                        collision.GetComponent<DetectorForAreas>().Disable();
+                        break;
+                    }
+                }
+            }
         }
         if (collision.gameObject.tag == movingObstacleTag)
         {
             player.RemoveLife();
             Destroy(gameObject);
-
             if (!player.hasGameOver)
                 spawnerManager.SpawnPlayer();
         }
-        
         if(collision.gameObject.tag == finishPointTag)
         {
             Instantiate(finishedState, collision.transform);
@@ -53,6 +67,7 @@ public class DetectorForPlayer : Detector
 
             if (!player.Won)
                 spawnerManager.SpawnPlayer();
+            collision.GetComponent<Collider2D>().enabled = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

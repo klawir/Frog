@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour
         for (int a=0;a< obstaclesSpawnPoints.Count;a++)
         {
             MovingObject spawnedObj = Instantiate(movingObjects[0], obstaclesSpawnPoints[a]);
+            spawnedObj.speed = obstaclesSpawnPoints[a].GetComponent<SpawnPoint>().startSpeed;
             managerObstacles.objects.Add(spawnedObj);
             spawnedObj.sectorNr = a;
         }
@@ -35,6 +36,7 @@ public class SpawnManager : MonoBehaviour
         for (int a = 0; a < floatingItemsSpawnPoints.Count; a++)
         {
             MovingObject spawnedObj = Instantiate(movingObjects[1], floatingItemsSpawnPoints[a]);
+            spawnedObj.speed = floatingItemsSpawnPoints[a].GetComponent<SpawnPoint>().startSpeed;
             managerObstacles.objects.Add(spawnedObj);
             spawnedObj.sectorNr = a;
         }
@@ -57,11 +59,13 @@ public class SpawnManager : MonoBehaviour
         {
             case 0:
                 spawnedObj = Instantiate(movingObjects[itemIndex], obstaclesSpawnPoints[obstacle.sectorNr]);
+                spawnedObj.speed = obstaclesSpawnPoints[obstacle.sectorNr].GetComponent<SpawnPoint>().startSpeed;
                 managerObstacles.objects.Add(spawnedObj);
                 spawnedObj.sectorNr = obstacle.sectorNr;
                 break;
             case 1:
                 spawnedObj = Instantiate(movingObjects[itemIndex], floatingItemsSpawnPoints[obstacle.sectorNr]);
+                spawnedObj.speed = floatingItemsSpawnPoints[obstacle.sectorNr].GetComponent<SpawnPoint>().startSpeed;
                 managerObstacles.objects.Add(spawnedObj);
                 spawnedObj.sectorNr = obstacle.sectorNr;
                 break;

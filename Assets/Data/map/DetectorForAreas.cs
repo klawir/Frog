@@ -5,11 +5,13 @@ using UnityEngine;
 public class DetectorForAreas : Detector
 {
     public string playerTag;
+    public string waterTag;
 
     public Collider2D collider;
 
     private PlayerManager player;
     private Reward reward;
+    public bool inWater;
 
     protected override void Start()
     {
@@ -21,15 +23,25 @@ public class DetectorForAreas : Detector
     {
         if (collision.gameObject.tag == playerTag)
         {
-            player.PrizeForEnter(reward);
-            Disable();
+            MovingObject[] movingObjects = GameObject.FindObjectsOfType<MovingObject>();
+            for (int a = 0; a < movingObjects.Length; a++)
+            {
+                if (Physics2D.IsTouching(movingObjects[a].GetComponent<Collider2D>(), collision))
+                {
+                    if (inWater)
+                    {
+                        player.PrizeForEnter(reward);
+                        Disable();
+                    }
+                }
+            }
         }
     }
     public void Enable()
     {
         collider.enabled = true;
     }
-    private void Disable()
+    public void Disable()
     {
         collider.enabled = false;
     }

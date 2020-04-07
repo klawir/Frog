@@ -9,6 +9,7 @@ TagManager:
   - areaObstacle
   - limitImmersionInWater
   - floatingItem
+  - firstTimeEntranceToArea
   layers:
   - Default
   - TransparentFX

@@ -22,8 +22,6 @@ public class DetectorForMovingObjects : Detector
             Destroy(gameObject);
         }
         if (collision.tag == limitImmersionInWater)
-        {
             obstacle.BlockImmersionInWater();
-        }
     }
 }
