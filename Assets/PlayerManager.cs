@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
     public int lifes;
-    public GameScore gameManager;
+    public WinGameManager winGameManager;
+    public LossGameManager lossGameManager;
+    public GameLimits gameLimits;
     public float timeLimit;
     public Text score;
     public Text time;
@@ -19,6 +19,13 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerData.scores > 0)
+        {
+            points = PlayerData.scores;
+            score.text = points.ToString();
+            lifes = PlayerData.lifes;
+            _lifes.text = lifes.ToString();
+        }
         timer = timeLimit;
         _lifes.text = lifes.ToString();
     }
@@ -26,6 +33,10 @@ public class PlayerManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
         time.text = timer.ToString();
+    }
+    public void ResetAll()
+    {
+        PlayerData.Reset();
     }
     private void AddPoints(int value)
     {
@@ -39,9 +50,13 @@ public class PlayerManager : MonoBehaviour
         float valuePercent = (elapsedTime) / timeLimit;
         float value = reward.reachedGoal - (reward.reachedGoal * valuePercent);
         AddPoints((int)value);
-        
+
         if (Won)
-            gameManager.ShowScores(this);
+        {
+            winGameManager.ShowScores(this);
+            PlayerData.lifes = lifes;
+            PlayerData.scores = points;
+        }
 
         timer = timeLimit;
     }
@@ -54,7 +69,7 @@ public class PlayerManager : MonoBehaviour
         lifes--;
         _lifes.text = lifes.ToString();
         if (hasGameOver)
-            gameManager.GameOver();
+            lossGameManager.GameOver();
     }
     public bool hasGameOver
     {
@@ -62,7 +77,7 @@ public class PlayerManager : MonoBehaviour
     }
     public bool Won
     {
-        get { return reachedGoals == gameManager.gloalLimit; }
+        get { return reachedGoals == gameLimits.gloals; }
     }
     public int ElapsedTime
     {

@@ -4,17 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameScore : MonoBehaviour
+public class WinGameManager : MonoBehaviour
 {
     public GameObject winPopup;
-    public GameObject gameOverPopup;
-
+    
     public Text lifes;
     public Text score;
     public Text time;
-
-    public int gloalLimit;
-    public string mainScene;
 
     public void ShowScores(PlayerManager playerManager)
     {
@@ -22,13 +18,5 @@ public class GameScore : MonoBehaviour
         lifes.text = playerManager._lifes.text;
         score.text = playerManager.score.text;
         time.text = playerManager.ElapsedTime.ToString();
-    }
-    public void GameOver()
-    {
-        gameOverPopup.gameObject.SetActive(true);
-    }
-    public void LoadStartScene()
-    {
-        SceneManager.LoadScene(mainScene);
     }
 }

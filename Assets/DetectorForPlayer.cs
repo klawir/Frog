@@ -22,7 +22,7 @@ public class DetectorForPlayer : Detector
     {
         base.Start();
         player = GameObject.FindObjectOfType<PlayerManager>();
-        reward = player.GetComponent<Reward>();
+        reward = GameObject.FindObjectOfType<Reward>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

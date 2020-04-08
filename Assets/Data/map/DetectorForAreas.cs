@@ -9,15 +9,15 @@ public class DetectorForAreas : Detector
 
     public Collider2D collider;
 
-    private PlayerManager player;
-    private Reward reward;
+    public PlayerManager player;
+    public Reward reward;
     public bool inWater;
 
     protected override void Start()
     {
         base.Start();
         player = GameObject.FindObjectOfType<PlayerManager>();
-        reward = player.GetComponent<Reward>();
+        reward = GameObject.FindObjectOfType<Reward>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

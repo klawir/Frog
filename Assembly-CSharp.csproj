@@ -77,12 +77,16 @@
     <Compile Include="Assets\Data\player\scripts\Right.cs" />
     <Compile Include="Assets\Data\player\scripts\State.cs" />
     <Compile Include="Assets\Data\system\ObjectsManager.cs" />
+    <Compile Include="Assets\Data\system\PlayerData.cs" />
     <Compile Include="Assets\Data\system\SpawnManager.cs" />
     <Compile Include="Assets\DetectorForPlayer.cs" />
-    <Compile Include="Assets\GameScore.cs" />
+    <Compile Include="Assets\GameLimits.cs" />
+    <Compile Include="Assets\LossGameManager.cs" />
     <Compile Include="Assets\PlayerManager.cs" />
     <Compile Include="Assets\Reward.cs" />
+    <Compile Include="Assets\SceneLoader.cs" />
     <Compile Include="Assets\SpawnPoint.cs" />
+    <Compile Include="Assets\WinGameManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/projects/unity 19/Frogger/proj/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
