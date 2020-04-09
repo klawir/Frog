@@ -12,7 +12,8 @@ public class DetectorForPlayer : Detector
 
     public SpriteRenderer finishedState;
 
-    private PlayerManager player;
+    private Player player;
+    private GameScore gameScore;
     private Reward reward;
     private Transform parentOfDetectedItem;
     private Collider2D water;
@@ -21,8 +22,9 @@ public class DetectorForPlayer : Detector
     protected override void Start()
     {
         base.Start();
-        player = GameObject.FindObjectOfType<PlayerManager>();
+        player = GameObject.FindObjectOfType<Player>();
         reward = GameObject.FindObjectOfType<Reward>();
+        gameScore = GameObject.FindObjectOfType<GameScore>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -45,7 +47,7 @@ public class DetectorForPlayer : Detector
                 {
                     if (!collision.GetComponent<DetectorForAreas>().inWater)
                     {
-                        player.PrizeForEnter(reward);
+                        gameScore.PrizeForEnter(reward);
                         collision.GetComponent<DetectorForAreas>().Disable();
                         break;
                     }
@@ -56,15 +58,14 @@ public class DetectorForPlayer : Detector
         {
             player.RemoveLife();
             Destroy(gameObject);
-            if (!player.hasGameOver)
+            if (!player.GameOver)
                 spawnerManager.SpawnPlayer();
         }
         if(collision.gameObject.tag == finishPointTag)
         {
             Instantiate(finishedState, collision.transform);
             Destroy(gameObject);
-            player.ReachGoal(reward);
-
+            player.AchieveTheGoal();
             if (!player.Won)
                 spawnerManager.SpawnPlayer();
             collision.GetComponent<Collider2D>().enabled = false;

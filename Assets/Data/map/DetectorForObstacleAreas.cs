@@ -19,10 +19,10 @@ public class DetectorForObstacleAreas : Detector
                     break;
                 if (a == movingObjects.Length - 1)
                 {
-                    PlayerManager player = GameObject.FindObjectOfType<PlayerManager>();
+                    Player player = GameObject.FindObjectOfType<Player>();
                     player.RemoveLife();
 
-                    if (!player.hasGameOver)
+                    if (!player.GameOver)
                     {
                         collider.enabled = true;
                         spawnerManager.SpawnPlayer();

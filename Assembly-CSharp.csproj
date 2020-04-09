@@ -81,8 +81,9 @@
     <Compile Include="Assets\Data\system\SpawnManager.cs" />
     <Compile Include="Assets\DetectorForPlayer.cs" />
     <Compile Include="Assets\GameLimits.cs" />
+    <Compile Include="Assets\GameScore.cs" />
     <Compile Include="Assets\LossGameManager.cs" />
-    <Compile Include="Assets\PlayerManager.cs" />
+    <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Reward.cs" />
     <Compile Include="Assets\SceneLoader.cs" />
     <Compile Include="Assets\SpawnPoint.cs" />

@@ -9,14 +9,14 @@ public class WinGameManager : MonoBehaviour
     public GameObject winPopup;
     
     public Text lifes;
-    public Text score;
+    public Text _score;
     public Text time;
 
-    public void ShowScores(PlayerManager playerManager)
+    public void ShowScores(GameScore score)
     {
         winPopup.gameObject.SetActive(true);
-        lifes.text = playerManager._lifes.text;
-        score.text = playerManager.score.text;
-        time.text = playerManager.ElapsedTime.ToString();
+        lifes.text = score._lifes.text;
+        _score.text = score.score.text;
+        time.text = PlayerData.totalTime.ToString();
     }
 }

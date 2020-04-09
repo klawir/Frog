@@ -9,14 +9,14 @@ public class DetectorForAreas : Detector
 
     public Collider2D collider;
 
-    public PlayerManager player;
+    public GameScore gameScore;
     public Reward reward;
     public bool inWater;
 
     protected override void Start()
     {
         base.Start();
-        player = GameObject.FindObjectOfType<PlayerManager>();
+        gameScore = GameObject.FindObjectOfType<GameScore>();
         reward = GameObject.FindObjectOfType<Reward>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -30,7 +30,7 @@ public class DetectorForAreas : Detector
                 {
                     if (inWater)
                     {
-                        player.PrizeForEnter(reward);
+                        gameScore.PrizeForEnter(reward);
                         Disable();
                     }
                 }
