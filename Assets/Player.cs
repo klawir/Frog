@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private int reachedGoals;
     private GameScore score;
     private Reward reward;
+    private TimeManager timeManager;
 
     private void Start()
     {
@@ -16,17 +17,18 @@ public class Player : MonoBehaviour
 
         score = GameObject.FindObjectOfType<GameScore>();
         reward = GameObject.FindObjectOfType<Reward>();
+        timeManager= GameObject.FindObjectOfType<TimeManager>();
     }
     public void ResetAllData()
     {
         PlayerData.Reset();
     }
-    public void AchieveTheGoal()
+    public void AchieveGoal()
     {
         reachedGoals++;
         PlayerData.goalsGained++;
 
-        reward.Do(score);
+        reward.Give(score, timeManager);
         if (Won)
         {
             PlayerData.lifes = lifes;
@@ -34,14 +36,18 @@ public class Player : MonoBehaviour
             WinGameManager winGameManager = GameLimits.FindObjectOfType<WinGameManager>();
             winGameManager.ShowScores(score);
         }
-
-        score.ResetTime();
+        else
+        {
+            SpawnManager spawnManager= GameLimits.FindObjectOfType<SpawnManager>();
+            spawnManager.SpawnPlayer();
+        }
+        timeManager.ResetTime();
     }
     public void RemoveLife()
     {
         lifes--;
-        score.Update(lifes);
-        score.TimeDifference();
+        score.UpdateLifes(lifes);
+        timeManager.TimeDifference();
 
         if (GameOver)
             lossGameManager.GameOver();

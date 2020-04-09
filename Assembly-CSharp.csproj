@@ -63,18 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Data\map\Detector.cs" />
-    <Compile Include="Assets\Data\map\DetectorForAreas.cs" />
-    <Compile Include="Assets\Data\map\DetectorForMovingObjects.cs" />
-    <Compile Include="Assets\Data\map\DetectorForObstacleAreas.cs" />
-    <Compile Include="Assets\Data\map\objects\MovingObject.cs" />
-    <Compile Include="Assets\Data\player\scripts\Backward.cs" />
-    <Compile Include="Assets\Data\player\scripts\Command.cs" />
-    <Compile Include="Assets\Data\player\scripts\Forward.cs" />
-    <Compile Include="Assets\Data\player\scripts\Keyboard.cs" />
-    <Compile Include="Assets\Data\player\scripts\Left.cs" />
-    <Compile Include="Assets\Data\player\scripts\Right.cs" />
-    <Compile Include="Assets\Data\player\scripts\State.cs" />
+    <Compile Include="Assets\Data\map\scripts\DetectorForAreas.cs" />
+    <Compile Include="Assets\Data\map\scripts\DetectorForObstacleAreas.cs" />
+    <Compile Include="Assets\Data\objects\moving objects\scripts\DetectorForMovingObjects.cs" />
+    <Compile Include="Assets\Data\objects\moving objects\scripts\MovingObject.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\Backward.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\Command.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\Forward.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\Keyboard.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\Left.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\Right.cs" />
+    <Compile Include="Assets\Data\objects\player\scripts\State.cs" />
+    <Compile Include="Assets\Data\objects\scripts\Detector.cs" />
     <Compile Include="Assets\Data\system\ObjectsManager.cs" />
     <Compile Include="Assets\Data\system\PlayerData.cs" />
     <Compile Include="Assets\Data\system\SpawnManager.cs" />
@@ -86,6 +86,8 @@
     <Compile Include="Assets\Reward.cs" />
     <Compile Include="Assets\SceneLoader.cs" />
     <Compile Include="Assets\SpawnPoint.cs" />
+    <Compile Include="Assets\StartLevelEffect.cs" />
+    <Compile Include="Assets\TimeManager.cs" />
     <Compile Include="Assets\WinGameManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/projects/unity 19/Frogger/proj/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

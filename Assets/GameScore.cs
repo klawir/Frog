@@ -6,21 +6,16 @@ using UnityEngine.UI;
 public class GameScore : MonoBehaviour
 {
     public Text score;
-    public Text time;
+   
     public Text _lifes;
 
-    public float timeLimit;
+    public SpawnManager spawnManager;
     
-    private float timer;
-    private float elapsedTime;
-
     private int points;
     private Player player;
 
     private void Start()
     {
-        timer = timeLimit;
-
         player = GameObject.FindObjectOfType<Player>();
         if (PlayerData.totalScores != 0)
         {
@@ -31,24 +26,12 @@ public class GameScore : MonoBehaviour
         }
         _lifes.text = player.lifes.ToString();
     }
-    private void Update()
-    {
-        timer -= Time.deltaTime;
-        time.text = timer.ToString();
-    }
-    public void ResetTime()
-    {
-        timer = timeLimit;
-    }
+    
     public int Points
     {
         get { return points; }
     }
-    public void TimeDifference()
-    {
-        elapsedTime = timeLimit - timer;
-        PlayerData.totalTime += elapsedTime;
-    }
+    
     public void AddPoints(int value)
     {
         points += value;
@@ -58,16 +41,9 @@ public class GameScore : MonoBehaviour
     {
         AddPoints(reward.firstTimeOnAnArea);
     }
-    public void Update(int lifes)
+    public void UpdateLifes(int value)
     {
-        _lifes.text = lifes.ToString();
+        _lifes.text = value.ToString();
     }
-    public int ElapsedTime
-    {
-        get { return (int)elapsedTime; }
-    }
-    public float APercentOfTimeLimit
-    {
-        get { return elapsedTime / timeLimit; }
-    }
+   
 }

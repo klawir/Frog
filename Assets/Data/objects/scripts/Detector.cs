@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Detector : MonoBehaviour
 {
     protected SpawnManager spawnerManager;
+    public Collider2D collider;
 
     protected virtual void Start()
     {

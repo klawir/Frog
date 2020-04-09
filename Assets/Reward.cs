@@ -7,10 +7,10 @@ public class Reward : MonoBehaviour
     public int reachedGoal;
     public int firstTimeOnAnArea;
 
-    public void Do(GameScore score)
+    public void Give(GameScore score, TimeManager time)
     {
-        score.TimeDifference();
-        float valuePercent = score.APercentOfTimeLimit;
+        time.TimeDifference();
+        float valuePercent = time.APercentOfTimeLimit;
         float value = reachedGoal - (reachedGoal * valuePercent);
         score.AddPoints((int)value);
     }

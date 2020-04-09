@@ -19,28 +19,38 @@ public class SpawnManager : MonoBehaviour
     public string floatingItemTag;
     public GameObject player;
     public Transform playerSpawnPos;
-    private ObjectsManager managerObstacles;
+    private ObjectsManager objectsManager;
+    public SpriteRenderer finishedState;
+
+    private void Start()
+    {
+        objectsManager = GameObject.FindObjectOfType<ObjectsManager>();
+        SpawnObjects(car, obstaclesSpawnPoints);
+        SpawnObjects(floatingObj, floatingItemsSpawnPoints);
+        SpawnObjects(floatingAnimal, floatingAnimalSpawnPoints);
+        SpawnPlayer();
+    }
 
     /// <summary>
     /// Spawns 1 all objects for each 1 line
     /// </summary>
-    public void SpawnObjects(MovingObject movingObject, List<RectTransform> spawnPos)
+    public void SpawnObjects(MovingObject obj, List<RectTransform> spawnPos)
     {
         for (int a = 0; a < spawnPos.Count; a++)
         {
-            MovingObject spawnedObj = Instantiate(movingObject, spawnPos[a]);
+            MovingObject spawnedObj = Instantiate(obj, spawnPos[a]);
             spawnedObj.speed = spawnPos[a].GetComponent<SpawnPoint>().startSpeed;
-            managerObstacles.objects.Add(spawnedObj);
+            objectsManager.objects.Add(spawnedObj);
             spawnedObj.sectorNr = a;
         }
     }
     /// <summary>
-    /// Spawns object 
+    /// Creates copy of this object
     /// </summary>
     /// <param name="obj"></param>
     public void SpawnObject(MovingObject obj)
     {
-        MovingObject spawnedObj;
+        MovingObject spawnedObj = new MovingObject();
 
         obj.gameObject.name = obj.gameObject.name.Replace("(Clone)", "");
         
@@ -48,23 +58,19 @@ public class SpawnManager : MonoBehaviour
         {
             spawnedObj = Instantiate(car, obstaclesSpawnPoints[obj.sectorNr]);
             spawnedObj.speed = obstaclesSpawnPoints[obj.sectorNr].GetComponent<SpawnPoint>().startSpeed;
-            managerObstacles.objects.Add(spawnedObj);
-            spawnedObj.sectorNr = obj.sectorNr;
         }
         if (obj.name == floatingObj.name)
         {
             spawnedObj = Instantiate(floatingObj, floatingItemsSpawnPoints[obj.sectorNr]);
             spawnedObj.speed = floatingItemsSpawnPoints[obj.sectorNr].GetComponent<SpawnPoint>().startSpeed;
-            managerObstacles.objects.Add(spawnedObj);
-            spawnedObj.sectorNr = obj.sectorNr;
         }
         if (obj.name == floatingAnimal.name)
         {
             spawnedObj = Instantiate(floatingAnimal, floatingAnimalSpawnPoints[obj.sectorNr]);
             spawnedObj.speed = floatingAnimalSpawnPoints[obj.sectorNr].GetComponent<SpawnPoint>().startSpeed;
-            managerObstacles.objects.Add(spawnedObj);
-            spawnedObj.sectorNr = obj.sectorNr;
         }
+        objectsManager.objects.Add(spawnedObj);
+        spawnedObj.sectorNr = obj.sectorNr;
     }
 
     /// <summary>
@@ -73,23 +79,24 @@ public class SpawnManager : MonoBehaviour
     /// <param name="obj"></param>
     public void RespawnObject(MovingObject obj)
     {
-        int itemIndex = managerObstacles.objects.IndexOf(obj);
-        managerObstacles.objects.RemoveAt(itemIndex);
+        int itemIndex = objectsManager.objects.IndexOf(obj);
+        objectsManager.objects.RemoveAt(itemIndex);
         if(obj.tag == floatingItemTag)
-            managerObstacles.floatingObject.Remove(obj);
-        managerObstacles.floatingObject.RemoveAll(item=>item==null);
+            objectsManager.floatingObject.Remove(obj);
+        objectsManager.floatingObject.RemoveAll(item=>item==null);
         SpawnObject(obj);
     }
     public void SpawnPlayer()
     {
         Instantiate(player, playerSpawnPos);
     }
-    private void Start()
+    /// <summary>
+    /// Creates player's clone on objective's place
+    /// </summary>
+    /// <param name="pos"></param>
+    public void SpawnPlayerWithoutControl(Collider2D pos)
     {
-        managerObstacles = GameObject.FindObjectOfType<ObjectsManager>();
-        SpawnObjects(car, obstaclesSpawnPoints);
-        SpawnObjects(floatingObj, floatingItemsSpawnPoints);
-        SpawnObjects(floatingAnimal, floatingAnimalSpawnPoints);
-        SpawnPlayer();
+        Instantiate(finishedState, pos.transform);
     }
+   
 }

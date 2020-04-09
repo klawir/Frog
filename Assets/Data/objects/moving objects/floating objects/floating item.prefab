@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -377145785114191524}
   - component: {fileID: 7625926004122789308}
   m_Layer: 5
-  m_Name: floating animal
+  m_Name: floating item
   m_TagString: floatingItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7e35fc529ab66f4d87e5c94548829cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8198894e5b9aaca48b68e5f42b654abb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 150, y: 65}
+  m_Size: {x: 200, y: 65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -128,14 +128,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.7, y: 4.37}
-    newSize: {x: 150, y: 65}
+    oldSize: {x: 11.92, y: 1.18}
+    newSize: {x: 200, y: 65}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 150, y: 65}
+  m_Size: {x: 200, y: 65}
   m_EdgeRadius: 0
 --- !u!114 &-377145785114191524
 MonoBehaviour:
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c97a1df93538f24582267f762464dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 7118222131224437675}
   spawnTrigger: spawnTrigger
   endOfMapTag: Respawn
   limitImmersionInWater: limitImmersionInWater

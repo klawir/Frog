@@ -6,8 +6,6 @@ public class DetectorForAreas : Detector
 {
     public string playerTag;
     public string waterTag;
-
-    public Collider2D collider;
     public bool inWater;
 
     protected override void Start()

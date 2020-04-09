@@ -10,25 +10,18 @@ public class DetectorForPlayer : Detector
     public string finishPointTag;
     public string firstTimeEntranceToArea;
 
-    public SpriteRenderer finishedState;
-
     private Player player;
-    private GameScore gameScore;
-    private Reward reward;
     private Transform parentOfDetectedItem;
     private Collider2D water;
-    public Collider2D collider;
     
     protected override void Start()
     {
         base.Start();
         player = GameObject.FindObjectOfType<Player>();
-        reward = GameObject.FindObjectOfType<Reward>();
-        gameScore = GameObject.FindObjectOfType<GameScore>();
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == areaObstacleTag)
+        if (collision.gameObject.tag == areaObstacleTag)
         {
             water = collision.GetComponent<Collider2D>();
             water.enabled = false;
@@ -47,6 +40,8 @@ public class DetectorForPlayer : Detector
                 {
                     if (!collision.GetComponent<DetectorForAreas>().inWater)
                     {
+                        GameScore gameScore = GameObject.FindObjectOfType<GameScore>();
+                        Reward reward = GameObject.FindObjectOfType<Reward>();
                         gameScore.PrizeForEnter(reward);
                         collision.GetComponent<DetectorForAreas>().Disable();
                         break;
@@ -61,13 +56,11 @@ public class DetectorForPlayer : Detector
             if (!player.GameOver)
                 spawnerManager.SpawnPlayer();
         }
-        if(collision.gameObject.tag == finishPointTag)
+        if (collision.gameObject.tag == finishPointTag)
         {
-            Instantiate(finishedState, collision.transform);
+            spawnerManager.SpawnPlayerWithoutControl(collision);
             Destroy(gameObject);
-            player.AchieveTheGoal();
-            if (!player.Won)
-                spawnerManager.SpawnPlayer();
+            player.AchieveGoal();
             collision.GetComponent<Collider2D>().enabled = false;
         }
     }

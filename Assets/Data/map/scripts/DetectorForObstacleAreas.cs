@@ -6,8 +6,6 @@ public class DetectorForObstacleAreas : Detector
 {
     public string playerTag; 
 
-    public Collider2D collider;
-    
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == playerTag)
