@@ -13,9 +13,6 @@ public class State : MonoBehaviour
         SetToForward();
     }
 
-    /// <summary>
-    /// Changes the navigation's state
-    /// </summary>
     public void SetToRight()
     {
         navigationStates = NavigationDirection.right;
@@ -33,19 +30,19 @@ public class State : MonoBehaviour
         navigationStates = NavigationDirection.backward;
     }
 
-    public bool RightState
+    public bool IsRightState
     {
         get { return navigationStates == NavigationDirection.right; }
     }
-    public bool LeftState
+    public bool IsLeftState
     {
         get { return navigationStates == NavigationDirection.left; }
     }
-    public bool ForwardState
+    public bool IsForwardState
     {
         get { return navigationStates == NavigationDirection.forward; }
     }
-    public bool BackwardState
+    public bool IsBackwardState
     {
         get { return navigationStates == NavigationDirection.backward; }
     }

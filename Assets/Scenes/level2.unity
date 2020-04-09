@@ -2024,9 +2024,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfa2a2481e846646bfd832f9531f9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjects:
-  - {fileID: -377145785114191524, guid: 53cf6df2dfb6a4e4abbbbee451f361b8, type: 3}
-  - {fileID: -377145785114191524, guid: 11b056bebd359714eb4d929ebd47496b, type: 3}
+  car: {fileID: -377145785114191524, guid: 53cf6df2dfb6a4e4abbbbee451f361b8, type: 3}
+  floatingObj: {fileID: -377145785114191524, guid: 11b056bebd359714eb4d929ebd47496b,
+    type: 3}
+  floatingAnimal: {fileID: -377145785114191524, guid: eabd7b1f399a185488346bf26552261f,
+    type: 3}
   obstaclesSpawnPoints:
   - {fileID: 701857933}
   - {fileID: 988241259}
@@ -2035,14 +2037,16 @@ MonoBehaviour:
   - {fileID: 1708829586}
   floatingItemsSpawnPoints:
   - {fileID: 465111105}
-  - {fileID: 325921854}
   - {fileID: 633205858}
-  - {fileID: 1247461437}
-  - {fileID: 893706412}
   floatingItemsEndSpawnPoints:
   - {fileID: 869045019}
-  - {fileID: 1959379486}
   - {fileID: 1465145392}
+  floatingAnimalSpawnPoints:
+  - {fileID: 325921854}
+  - {fileID: 1247461437}
+  - {fileID: 893706412}
+  floatingAnimalEndSpawnPoints:
+  - {fileID: 1959379486}
   - {fileID: 704862211}
   - {fileID: 312066721}
   floatingItemTag: floatingItem

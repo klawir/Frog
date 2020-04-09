@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public List<MovingObject> movingObjects;
+    public MovingObject car;
+    public MovingObject floatingObj;
+    public MovingObject floatingAnimal;
+
     public List<RectTransform> obstaclesSpawnPoints;
     public List<RectTransform> obstaclesEndSpawnPoints;
 
     public List<RectTransform> floatingItemsSpawnPoints;
     public List<RectTransform> floatingItemsEndSpawnPoints;
+
+    public List<RectTransform> floatingAnimalSpawnPoints;
+    public List<RectTransform> floatingAnimalEndSpawnPoints;
 
     public string floatingItemTag;
     public GameObject player;
@@ -16,74 +22,63 @@ public class SpawnManager : MonoBehaviour
     private ObjectsManager managerObstacles;
 
     /// <summary>
-    /// Spawns 1 car for each 1 line
+    /// Spawns 1 all objects for each 1 line
     /// </summary>
-    public void SpawnCars()
+    public void SpawnObjects(MovingObject movingObject, List<RectTransform> spawnPos)
     {
-        for (int a=0;a< obstaclesSpawnPoints.Count;a++)
+        for (int a = 0; a < spawnPos.Count; a++)
         {
-            MovingObject spawnedObj = Instantiate(movingObjects[0], obstaclesSpawnPoints[a]);
-            spawnedObj.speed = obstaclesSpawnPoints[a].GetComponent<SpawnPoint>().startSpeed;
+            MovingObject spawnedObj = Instantiate(movingObject, spawnPos[a]);
+            spawnedObj.speed = spawnPos[a].GetComponent<SpawnPoint>().startSpeed;
             managerObstacles.objects.Add(spawnedObj);
             spawnedObj.sectorNr = a;
         }
     }
     /// <summary>
-    /// Spawns 1 floating item for each 1 line
+    /// Spawns object 
     /// </summary>
-    public void SpawnFloatingItems()
+    /// <param name="obj"></param>
+    public void SpawnObject(MovingObject obj)
     {
-        for (int a = 0; a < floatingItemsSpawnPoints.Count; a++)
-        {
-            MovingObject spawnedObj = Instantiate(movingObjects[1], floatingItemsSpawnPoints[a]);
-            spawnedObj.speed = floatingItemsSpawnPoints[a].GetComponent<SpawnPoint>().startSpeed;
-            managerObstacles.objects.Add(spawnedObj);
-            spawnedObj.sectorNr = a;
-        }
-    }
-    /// <summary>
-    /// Spawns a car at line based on the argument
-    /// </summary>
-    /// <param name="obstacle"></param>
-    public void SpawnObject(MovingObject obstacle)
-    {
-        int itemIndex = 0;
         MovingObject spawnedObj;
 
-        obstacle.gameObject.name = obstacle.gameObject.name.Replace("(Clone)", "");
-        foreach (MovingObject _obstacle in movingObjects)
-            if (obstacle.name == _obstacle.name)
-                itemIndex = movingObjects.IndexOf(_obstacle);
-
-        switch (itemIndex)
+        obj.gameObject.name = obj.gameObject.name.Replace("(Clone)", "");
+        
+        if (obj.name == car.name)
         {
-            case 0:
-                spawnedObj = Instantiate(movingObjects[itemIndex], obstaclesSpawnPoints[obstacle.sectorNr]);
-                spawnedObj.speed = obstaclesSpawnPoints[obstacle.sectorNr].GetComponent<SpawnPoint>().startSpeed;
-                managerObstacles.objects.Add(spawnedObj);
-                spawnedObj.sectorNr = obstacle.sectorNr;
-                break;
-            case 1:
-                spawnedObj = Instantiate(movingObjects[itemIndex], floatingItemsSpawnPoints[obstacle.sectorNr]);
-                spawnedObj.speed = floatingItemsSpawnPoints[obstacle.sectorNr].GetComponent<SpawnPoint>().startSpeed;
-                managerObstacles.objects.Add(spawnedObj);
-                spawnedObj.sectorNr = obstacle.sectorNr;
-                break;
+            spawnedObj = Instantiate(car, obstaclesSpawnPoints[obj.sectorNr]);
+            spawnedObj.speed = obstaclesSpawnPoints[obj.sectorNr].GetComponent<SpawnPoint>().startSpeed;
+            managerObstacles.objects.Add(spawnedObj);
+            spawnedObj.sectorNr = obj.sectorNr;
+        }
+        if (obj.name == floatingObj.name)
+        {
+            spawnedObj = Instantiate(floatingObj, floatingItemsSpawnPoints[obj.sectorNr]);
+            spawnedObj.speed = floatingItemsSpawnPoints[obj.sectorNr].GetComponent<SpawnPoint>().startSpeed;
+            managerObstacles.objects.Add(spawnedObj);
+            spawnedObj.sectorNr = obj.sectorNr;
+        }
+        if (obj.name == floatingAnimal.name)
+        {
+            spawnedObj = Instantiate(floatingAnimal, floatingAnimalSpawnPoints[obj.sectorNr]);
+            spawnedObj.speed = floatingAnimalSpawnPoints[obj.sectorNr].GetComponent<SpawnPoint>().startSpeed;
+            managerObstacles.objects.Add(spawnedObj);
+            spawnedObj.sectorNr = obj.sectorNr;
         }
     }
 
     /// <summary>
     /// Respawns a car which has been left the map
     /// </summary>
-    /// <param name="obstacle"></param>
-    public void RespawnObject(MovingObject obstacle)
+    /// <param name="obj"></param>
+    public void RespawnObject(MovingObject obj)
     {
-        int itemIndex = managerObstacles.objects.IndexOf(obstacle);
+        int itemIndex = managerObstacles.objects.IndexOf(obj);
         managerObstacles.objects.RemoveAt(itemIndex);
-        if(obstacle.tag == floatingItemTag)
-            managerObstacles.floatingObject.Remove(obstacle);
+        if(obj.tag == floatingItemTag)
+            managerObstacles.floatingObject.Remove(obj);
         managerObstacles.floatingObject.RemoveAll(item=>item==null);
-        SpawnObject(obstacle);
+        SpawnObject(obj);
     }
     public void SpawnPlayer()
     {
@@ -92,8 +87,9 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         managerObstacles = GameObject.FindObjectOfType<ObjectsManager>();
-        SpawnCars();
-        SpawnFloatingItems();
+        SpawnObjects(car, obstaclesSpawnPoints);
+        SpawnObjects(floatingObj, floatingItemsSpawnPoints);
+        SpawnObjects(floatingAnimal, floatingAnimalSpawnPoints);
         SpawnPlayer();
     }
 }

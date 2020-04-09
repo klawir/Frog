@@ -2286,9 +2286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfa2a2481e846646bfd832f9531f9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjects:
-  - {fileID: -377145785114191524, guid: 53cf6df2dfb6a4e4abbbbee451f361b8, type: 3}
-  - {fileID: -377145785114191524, guid: 11b056bebd359714eb4d929ebd47496b, type: 3}
+  car: {fileID: -377145785114191524, guid: 53cf6df2dfb6a4e4abbbbee451f361b8, type: 3}
+  floatingObj: {fileID: -377145785114191524, guid: 11b056bebd359714eb4d929ebd47496b,
+    type: 3}
+  floatingAnimal: {fileID: -377145785114191524, guid: eabd7b1f399a185488346bf26552261f,
+    type: 3}
   obstaclesSpawnPoints:
   - {fileID: 701857933}
   - {fileID: 1858913239}
@@ -2300,15 +2302,17 @@ MonoBehaviour:
   - {fileID: 631758415}
   - {fileID: 906588375}
   floatingItemsSpawnPoints:
+  - {fileID: 881270388}
+  floatingItemsEndSpawnPoints:
+  - {fileID: 325421204}
+  floatingAnimalSpawnPoints:
   - {fileID: 465111105}
   - {fileID: 1334690099}
   - {fileID: 2067828745}
-  - {fileID: 881270388}
-  floatingItemsEndSpawnPoints:
+  floatingAnimalEndSpawnPoints:
   - {fileID: 869045019}
   - {fileID: 1402717167}
   - {fileID: 1821481021}
-  - {fileID: 325421204}
   floatingItemTag: floatingItem
   player: {fileID: 5891304651569587556, guid: e4b01f6eed820414f8722ae7f4231305, type: 3}
   playerSpawnPos: {fileID: 1954279361}
@@ -2704,7 +2708,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537715461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 881270388}

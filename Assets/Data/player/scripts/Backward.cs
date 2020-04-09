@@ -6,7 +6,7 @@ public class Backward : Command
 {
     public override void Execute()
     {
-        if (!state.BackwardState)
+        if (!state.IsBackwardState)
         {
             rotate.eulerAngles = new Vector3(0, 0, 180);
             state.SetToBackward();

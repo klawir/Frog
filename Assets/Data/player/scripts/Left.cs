@@ -8,7 +8,7 @@ public class Left : Command
 {
     public override void Execute()
     {
-        if (!state.LeftState)
+        if (!state.IsLeftState)
         {
             rotate.eulerAngles = new Vector3(0, 0, 90f);
             state.SetToLeft();

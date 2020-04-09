@@ -7,7 +7,7 @@ public class Right : Command
 {
     public override void Execute()
     {
-        if (!state.RightState)
+        if (!state.IsRightState)
         {
             rotate.eulerAngles = new Vector3(0, 0, -90f);
             state.SetToRight();

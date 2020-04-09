@@ -67,8 +67,7 @@
     <Compile Include="Assets\Data\map\DetectorForAreas.cs" />
     <Compile Include="Assets\Data\map\DetectorForMovingObjects.cs" />
     <Compile Include="Assets\Data\map\DetectorForObstacleAreas.cs" />
-    <Compile Include="Assets\Data\map\floating objects\DetectorForFloatingObjects.cs" />
-    <Compile Include="Assets\Data\map\obstacles\car\MovingObject.cs" />
+    <Compile Include="Assets\Data\map\objects\MovingObject.cs" />
     <Compile Include="Assets\Data\player\scripts\Backward.cs" />
     <Compile Include="Assets\Data\player\scripts\Command.cs" />
     <Compile Include="Assets\Data\player\scripts\Forward.cs" />
